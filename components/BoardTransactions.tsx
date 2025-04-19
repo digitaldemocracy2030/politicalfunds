@@ -13,7 +13,7 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react'
-import {BanknoteArrowUpIcon, ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
+import {BanknoteArrowDownIcon, BanknoteArrowUpIcon, ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
 import {useState} from 'react'
 import {Transaction} from '@/type'
 
@@ -38,7 +38,13 @@ export function BoardTransactions({direction, transactions}: Props) {
       <Box mb={5}>
         <HStack mb={2}>
           <HStack fontSize={'xl'} fontWeight={'bold'}>
-            <BanknoteArrowUpIcon size={28} className={direction}/>
+            {
+              direction === 'income' ? (
+                <BanknoteArrowUpIcon size={28} className={direction} />
+              ) : (
+                <BanknoteArrowDownIcon size={28} className={direction} />
+              )
+            }
             <Text>{direction === 'income' ? '収入' : '支出'}の一覧</Text>
           </HStack>
         </HStack>
